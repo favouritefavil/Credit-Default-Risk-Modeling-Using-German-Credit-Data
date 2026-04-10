@@ -1,0 +1,2 @@
+# Credit-Default-Risk-Modeling-Using-German-Credit-Data
+This project builds a structured, data-driven credit risk framework using the German Credit Dataset — analyzing 1,000 loan applicants across 20 borrower and loan characteristics to identify the key drivers of default, profile the highest-risk borrower segments, and develop a cost-sensitive predictive model that supports better lending decisions.
