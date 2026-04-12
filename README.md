@@ -254,7 +254,8 @@ Good borrowers wrongly rejected (FP):          43
 
 ### 1. Portfolio Default Distribution
 
-![Default Distribution](assets/images/01_default_distribution.png)
+![01_default_distribution](https://github.com/user-attachments/assets/9bd210f8-1a15-4be3-98bc-935467efcd63)
+
 
 The 70/30 class split confirms that a naive model predicting "no default" for every applicant would achieve 70% accuracy while completely missing the business objective — establishing why cost-sensitive evaluation is essential throughout this project.
 
@@ -262,7 +263,8 @@ The 70/30 class split confirms that a naive model predicting "no default" for ev
 
 ### 2. Confusion Matrix Heatmap
 
-![Confusion Matrix](assets/images/02_confusion_matrix.png)
+![02_confusion_matrix](https://github.com/user-attachments/assets/b0745360-bba3-4e33-bb26-b9f83a8f70fd)
+
 
 At threshold 0.5, the model catches 42 defaulters but misses 20. The deep navy cell (95 true negatives) against the lighter shading of the remaining cells immediately reveals the model's dominant prediction pattern — better at identifying good borrowers than catching defaulters, which is precisely what threshold optimization addresses.
 
@@ -270,7 +272,8 @@ At threshold 0.5, the model catches 42 defaulters but misses 20. The deep navy c
 
 ### 3. Threshold vs Cost Curve
 
-![Threshold vs Cost](assets/images/03_threshold_cost_curve.png)
+![03_threshold_cost_curve](https://github.com/user-attachments/assets/6449006a-15cf-4a74-af56-b8fe1f61d0ac)
+
 
 The cost curve is not monotonically decreasing — it rises and falls, confirming that simply lowering the threshold does not guarantee cost reduction at every step. The global minimum at threshold 0.1 (cost = 129) is the cost-optimal operating point, reducing missed defaults by 55% versus the standard threshold.
 
@@ -278,7 +281,8 @@ The cost curve is not monotonically decreasing — it rises and falls, confirmin
 
 ### 4. ROC Curve — Model Discrimination (AUC = 0.74)
 
-![ROC Curve](assets/images/05_roc_curve.png)
+![04_feature_coefficients](https://github.com/user-attachments/assets/b44fc76d-dd99-4e38-ae9c-a51a77e30aa2)
+
 
 The ROC curve bows meaningfully above the random chance diagonal (orange dashed line), confirming genuine predictive value beyond chance. The early steep rise on the left side indicates the model correctly identifies a significant proportion of defaulters before accumulating many false positives — a desirable property in a lending context.
 
@@ -286,7 +290,8 @@ The ROC curve bows meaningfully above the random chance diagonal (orange dashed 
 
 ### 5. Feature Importance — Top Risk Drivers and Risk Reducers
 
-![Feature Coefficients](assets/images/04_feature_coefficients.png)
+![05_roc_curve](https://github.com/user-attachments/assets/4a587210-7952-4211-9c25-80e8aee08dd0)
+
 
 **Strongest risk-increasing features:**
 - `property_A124` (+0.748) — No collateral or property assets
