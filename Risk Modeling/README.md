@@ -11,12 +11,12 @@
 
 ## Business Problem
 
-Credit default is one of the most financially consequential risks a lending institution faces. Every loan approved for a borrower who ultimately defaults represents not just a missed repayment — it represents provisioning costs, recovery efforts, capital erosion, and a deteriorating portfolio that attracts regulatory scrutiny.
+Credit default is one of the most financially consequential risks a lending institution faces. Every loan approved for a borrower who ultimately defaults represents not just a missed repayment it represents provisioning costs, recovery efforts, capital erosion, and a deteriorating portfolio that attracts regulatory scrutiny.
 
-This project builds a structured, data-driven credit risk framework using the German Credit Dataset — analyzing 1,000 loan applicants across 20 borrower and loan characteristics to identify the key drivers of default, profile the highest-risk borrower segments, and develop a cost-sensitive predictive model that supports better lending decisions.
+This project builds a structured, data-driven credit risk framework using the German Credit Dataset analyzing 1,000 loan applicants across 20 borrower and loan characteristics to identify the key drivers of default, profile the highest-risk borrower segments, and develop a cost-sensitive predictive model that supports better lending decisions.
 
 > **Portfolio Baseline:** 30% of borrowers in this dataset defaulted.  
-> **Project Goal:** Identify who they are — before the loan is approved.
+> **Project Goal:** Identify who they are before the loan is approved.
 
 ---
 
@@ -102,7 +102,7 @@ SQL-based default rate analysis was conducted across six borrower and loan chara
 | A33 — Past repayment delays | 88 | 28 | 31.82% |
 | A34 — Critical account / external credits | 293 | 50 | 17.06% |
 
-**Key Insight:** Thin-file borrowers — those with no prior credit or credits only at a single institution — default at more than double the portfolio average. The apparent "clean" history reflects insufficient data, not demonstrated repayment discipline.
+**Key Insight:** Thin-file borrowers those with no prior credit or credits only at a single institution default at more than double the portfolio average. The apparent "clean" history reflects insufficient data, not demonstrated repayment discipline.
 
 ---
 
@@ -166,7 +166,7 @@ SQL-based default rate analysis was conducted across six borrower and loan chara
 | A32 — Existing credits paid duly | A64 — Strong savings | 21 | 2 | 9.52% |
 | A34 — Critical account | A64 — Strong savings | 20 | 1 | **5.00%** |
 
-**Key Insight:** Thin-file borrowers with very low savings default at **70–72%** — more than double the portfolio baseline. Risk compounds multiplicatively, not additively.
+**Key Insight:** Thin-file borrowers with very low savings default at **70–72%** more than double the portfolio baseline. Risk compounds multiplicatively, not additively.
 
 ---
 
@@ -207,7 +207,7 @@ SQL-based default rate analysis was conducted across six borrower and loan chara
 
 #### Model Selection
 
-A **Logistic Regression** model was selected for its interpretability and direct alignment with the concept of **Probability of Default (PD)** — the foundational metric in credit risk assessment.
+A **Logistic Regression** model was selected for its interpretability and direct alignment with the concept of **Probability of Default (PD)** the foundational metric in credit risk assessment.
 
 #### Data Preparation Steps
 
@@ -246,7 +246,7 @@ Good borrowers wrongly rejected (FP):          43
 
 #### Model Discrimination
 
-**AUC = 0.74** — the model correctly ranks a randomly selected defaulter above a randomly selected good borrower 74% of the time. For a Logistic Regression model trained on 800 records, this is a credible and honest baseline.
+**AUC = 0.74** the model correctly ranks a randomly selected defaulter above a randomly selected good borrower 74% of the time. For a Logistic Regression model trained on 800 records, this is a credible and honest baseline.
 
 ---
 
@@ -264,7 +264,7 @@ The 70/30 class split confirms that a naive model predicting "no default" for ev
 
 ![Confusion Matrix](assets/images/02_confusion_matrix.png)
 
-At threshold 0.5, the model catches 42 defaulters but misses 20. The deep navy cell (95 true negatives) against the lighter shading of the remaining cells immediately reveals the model's dominant prediction pattern — better at identifying good borrowers than catching defaulters, which is precisely what threshold optimization addresses.
+At threshold 0.5, the model catches 42 defaulters but misses 20. The deep navy cell (95 true negatives) against the lighter shading of the remaining cells immediately reveals the model's dominant prediction pattern better at identifying good borrowers than catching defaulters, which is precisely what threshold optimization addresses.
 
 ---
 
@@ -272,7 +272,7 @@ At threshold 0.5, the model catches 42 defaulters but misses 20. The deep navy c
 
 ![Threshold vs Cost](assets/images/03_threshold_cost_curve.png)
 
-The cost curve is not monotonically decreasing — it rises and falls, confirming that simply lowering the threshold does not guarantee cost reduction at every step. The global minimum at threshold 0.1 (cost = 129) is the cost-optimal operating point, reducing missed defaults by 55% versus the standard threshold.
+The cost curve is not monotonically decreasing it rises and falls, confirming that simply lowering the threshold does not guarantee cost reduction at every step. The global minimum at threshold 0.1 (cost = 129) is the cost-optimal operating point, reducing missed defaults by 55% versus the standard threshold.
 
 ---
 
@@ -280,7 +280,7 @@ The cost curve is not monotonically decreasing — it rises and falls, confirmin
 
 ![ROC Curve](assets/images/05_roc_curve.png)
 
-The ROC curve bows meaningfully above the random chance diagonal (orange dashed line), confirming genuine predictive value beyond chance. The early steep rise on the left side indicates the model correctly identifies a significant proportion of defaulters before accumulating many false positives — a desirable property in a lending context.
+The ROC curve bows meaningfully above the random chance diagonal (orange dashed line), confirming genuine predictive value beyond chance. The early steep rise on the left side indicates the model correctly identifies a significant proportion of defaulters before accumulating many false positives a desirable property in a lending context.
 
 ---
 
@@ -299,7 +299,7 @@ The ROC curve bows meaningfully above the random chance diagonal (orange dashed 
 - `other_debtors_A103` (-0.998) — Guarantor-backed loan
 - `savings_account_A64` (-0.797) — Strong savings ≥ 1,000 DM
 
-The coefficient chart confirms every pattern surfaced during SQL-based EDA — the model is capturing genuine credit risk signals, not noise.
+The coefficient chart confirms every pattern surfaced during SQL-based EDA the model is capturing genuine credit risk signals, not noise.
 
 ---
 
@@ -336,7 +336,7 @@ Long-term loans (> 36 months) carry a 51.7% default rate regardless of employmen
 Establish a maximum installment rate of 30–35% of verified disposable income as a hard underwriting constraint. Loan sizing should be determined by working backward from this ceiling.
 
 **6. Introduce Risk-Based Loan Pricing**
-Align interest rates with predicted default probability. Higher-risk borrowers — particularly those with no collateral (property_A124 coefficient +0.748) — should carry higher margins to offset expected losses.
+Align interest rates with predicted default probability. Higher-risk borrowers particularly those with no collateral (property_A124 coefficient +0.748) should carry higher margins to offset expected losses.
 
 **7. Establish Ongoing Model Monitoring**
 Track monthly: default rate among approved borrowers, false negative rate, and AUC. Trigger formal model review if any metric deteriorates by more than 5 percentage points over a rolling 90-day window.
@@ -389,7 +389,7 @@ credit-default-risk-german-data/
 
 ## About This Project
 
-This project was built as part of a professional credit risk analytics portfolio, demonstrating an end-to-end analytical workflow from raw data to actionable business recommendations — using tools and frameworks aligned with real-world lending practice.
+This project was built as part of a professional credit risk analytics portfolio, demonstrating an end-to-end analytical workflow from raw data to actionable business recommendations using tools and frameworks aligned with real-world lending practice.
 
 The analysis follows a structured methodology: data validation in PostgreSQL, SQL-driven exploratory analysis, multi-variable risk profiling, cost-sensitive predictive modeling in Python, and translation of findings into credit policy language.
 
@@ -403,7 +403,7 @@ Benin City, Nigeria
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-favouritefavil.github.io-1F3864?style=for-the-badge)](https://favouritefavil.github.io)
 [![GitHub](https://img.shields.io/badge/GitHub-favouritefavil-181717?style=for-the-badge&logo=github)](https://github.com/favouritefavil)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/favouritefavil)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](http://www.linkedin.com/in/favour-chegwe)
 
 ---
 
