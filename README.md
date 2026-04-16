@@ -281,7 +281,9 @@ The cost curve is not monotonically decreasing it rises and falls, confirming th
 
 ### 4. ROC Curve — Model Discrimination (AUC = 0.74)
 
-![04_feature_coefficients](https://github.com/user-attachments/assets/b44fc76d-dd99-4e38-ae9c-a51a77e30aa2)
+
+![05_roc_curve](https://github.com/user-attachments/assets/4a587210-7952-4211-9c25-80e8aee08dd0)
+
 
 
 The ROC curve bows meaningfully above the random chance diagonal (orange dashed line), confirming genuine predictive value beyond chance. The early steep rise on the left side indicates the model correctly identifies a significant proportion of defaulters before accumulating many false positives a desirable property in a lending context.
@@ -290,7 +292,7 @@ The ROC curve bows meaningfully above the random chance diagonal (orange dashed 
 
 ### 5. Feature Importance — Top Risk Drivers and Risk Reducers
 
-![05_roc_curve](https://github.com/user-attachments/assets/4a587210-7952-4211-9c25-80e8aee08dd0)
+![04_feature_coefficients](https://github.com/user-attachments/assets/b44fc76d-dd99-4e38-ae9c-a51a77e30aa2)
 
 
 **Strongest risk-increasing features:**
